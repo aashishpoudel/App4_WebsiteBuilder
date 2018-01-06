@@ -14,20 +14,20 @@ def about():
 def hidden():
     return "Website in Heroku -- By Aashish Poudel"
 
-@app.route('/page1/')
-def page1():
-    return render_template("page1.html")
+@app.route('/Project1/')
+def Project1():
+    return render_template("Project1.html")
 
-@app.route('/page2/')
-def page2():
-    return render_template("page2.html")
+@app.route('/Project2/')
+def Project2():
+    return render_template("Project2.html")
 
 @app.route('/home/')
 def home():
     return render_template("home.html")
 
-@app.route('/plot/')
-def plot():
+@app.route('/financeplot/')
+def financeplot():
     import pandas
     from bokeh.plotting import figure, output_file, show
     from pandas_datareader import data
@@ -72,7 +72,7 @@ def plot():
     script1, div1 = components(p)
     cdn_js = CDN.js_files[0]
     cdn_css = CDN.css_files[0]
-    return render_template("plot.html",
+    return render_template("financeplot.html",
     script1=script1,
     div1=div1,
     cdn_css=cdn_css,

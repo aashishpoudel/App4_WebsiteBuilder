@@ -54,6 +54,7 @@ def financeplot():
     df["Middle"] = (df.Open+df.Close)/2
     df["Height"] = df.Close-df.Open
 
+    print(df)
     title = ticker + " Chart (" + str(startdate)+" to "+str(enddate)+")"
     p = figure(x_axis_type="datetime",plot_height=500, plot_width=1000, title=title)
     #p.rect(df.index,df["Close"], width=0.2, height=5, size=2.0)
@@ -80,9 +81,6 @@ def QAM_Receiver():
     import pandas
     #from bokeh.charts import Scatter
     from bokeh.plotting import figure,output_file, show
-    from bokeh.models import HoverTool
-    from bokeh.embed import components
-    from bokeh.resources import CDN
 
     def Qfunc(x):
         return (1/2)*(1-math.erf(x/math.sqrt(2)))
@@ -190,15 +188,15 @@ def QAM_Receiver():
 
     title = "Signal Constellation Diagram for Mod_Order = " + str(M) + " and SNR = " + str(SNR_for_plot)
     output_filename = "Signal_Constellation_for_PSK.html"
-    p_constellation = figure(title=title,plot_width=700, plot_height=700)
+    p_constellation = figure(title=title)
     p_constellation.scatter(ycos_values, ysin_values, marker="x", line_color="#6666ee", fill_color="#ee6666", fill_alpha=0.5, size=12)
     p_constellation.xaxis.axis_label="I Channel"
     p_constellation.yaxis.axis_label="Q Channel"
-    #output_file(output_filename)
-    #show(p_constellation)
+    # p_constellation=Scatter(df, x="X", y = "Y", title=title, marker='x', xlabel="I Channel",ylabel="Q Channel")  # bokeh.chart Scatter plot is outdated
+    output_file(output_filename)
+    show(p_constellation)
 
-    title = "Bit Error Rate for Mod_Order = " + str(M)
-    p_ber = figure(title=title,plot_width=700, plot_height=700)
+    p_ber = figure(plot_width=600, plot_height=600)
     p_ber.line(SNRbdBt, BER_actual, line_width=2, legend="BER_actual")
     p_ber.circle(SNRdBs, BER_calc, fill_color="white", size=5, legend="BER_calculated")
     p_ber.xaxis.axis_label="SNR in dB"
@@ -206,25 +204,9 @@ def QAM_Receiver():
     p_ber.legend.location = "top_right"
     p_ber.legend.click_policy="hide"
     output_filename = "Bit_Error_Probability.html"
-    #output_file(output_filename)
-    #show(p_ber)
-
-    # p = figure(x_axis_type="datetime",plot_height=500, plot_width=1000, title=title)
-    # hours_12 = 12*60*60*1000
-    # p.rect(df.index[df.Status=="Increase"], df.Middle[df.Status=="Increase"], width=hours_12, height=abs(df.Height[df.Status=="Increase"]), color="blue")
-    # p.rect(df.index[df.Status=="Decrease"], df.Middle[df.Status=="Decrease"], width=hours_12, height=abs(df.Height[df.Status=="Decrease"]), color="red")
-    # p.segment(df.index, df.High, df.index,df.Low, color="Black")
-    script1, div1 = components(p_constellation)
-    script2, div2 = components(p_ber)
-    cdn_js = CDN.js_files[0]
-    cdn_css = CDN.css_files[0]
-    return render_template("qam_receiver.html",
-    script1=script1,
-    div1=div1,
-    script2=script2,
-    div2=div2,
-    cdn_css=cdn_css,
-    cdn_js=cdn_js)
+    output_file(output_filename)
+    show(p_ber)
+    return render_template("QAM_Receiver.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

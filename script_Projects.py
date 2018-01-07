@@ -208,12 +208,6 @@ def QAM_Receiver():
     output_filename = "Bit_Error_Probability.html"
     #output_file(output_filename)
     #show(p_ber)
-
-    # p = figure(x_axis_type="datetime",plot_height=500, plot_width=1000, title=title)
-    # hours_12 = 12*60*60*1000
-    # p.rect(df.index[df.Status=="Increase"], df.Middle[df.Status=="Increase"], width=hours_12, height=abs(df.Height[df.Status=="Increase"]), color="blue")
-    # p.rect(df.index[df.Status=="Decrease"], df.Middle[df.Status=="Decrease"], width=hours_12, height=abs(df.Height[df.Status=="Decrease"]), color="red")
-    # p.segment(df.index, df.High, df.index,df.Low, color="Black")
     script1, div1 = components(p_constellation)
     script2, div2 = components(p_ber)
     cdn_js = CDN.js_files[0]

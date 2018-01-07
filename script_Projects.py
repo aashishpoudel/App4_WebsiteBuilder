@@ -184,9 +184,6 @@ def QAM_Receiver():
             if totalBitError > 100: break
         BER_calc[snrIdx] = totalBitError/((k)*bits)
 
-    # df = pandas.DataFrame(columns=["X","Y"])
-    # df["X"]=ycos_values
-    # df["Y"]=ysin_values
 
     title = "Signal Constellation Diagram for Mod_Order = " + str(M) + " and SNR = " + str(SNR_for_plot)
     output_filename = "Signal_Constellation_for_PSK.html"

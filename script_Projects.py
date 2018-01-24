@@ -11,7 +11,7 @@ def about():
     return render_template("about.html")
 
 @app.route('/gui_automation_tool/')
-def Project2():
+def gui_automation_tool():
     return render_template("gui_automation_tool.html")
 
 @app.route('/home/')

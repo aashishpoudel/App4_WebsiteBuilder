@@ -47,6 +47,14 @@ div.home {
           border-radius: 6px;
 }
 
+div.project {
+  padding: 10px 0 30px 0;
+  background-color: #E6E6FA;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
 div.about {
   padding: 10px 0 30px 0;
   background-color: #E6E6FA;

@@ -10,9 +10,9 @@ def root():
 def about():
     return render_template("about.html")
 
-@app.route('/Project2/')
+@app.route('/gui_automation_tool/')
 def Project2():
-    return render_template("Project2.html")
+    return render_template("gui_automation_tool.html")
 
 @app.route('/home/')
 def home():

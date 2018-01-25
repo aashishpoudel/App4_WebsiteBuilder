@@ -10,9 +10,21 @@ def root():
 def about():
     return render_template("about.html")
 
+@app.route('/pcb_project/')
+def pcb_project():
+    return render_template("pcb_project.html")
+
 @app.route('/gui_automation_tool/')
 def gui_automation_tool():
     return render_template("gui_automation_tool.html")
+
+@app.route('/mirror_project/')
+def mirror_project():
+    return render_template("mirror_project.html")
+
+@app.route('/mis_project/')
+def mis_project():
+    return render_template("mis_project.html")
 
 @app.route('/home/')
 def home():
